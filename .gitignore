@@ -1,0 +1,4 @@
+#Git ignore: standard files
+*.txt
+#ignore obj files
+*.obj
