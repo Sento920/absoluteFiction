@@ -4,7 +4,6 @@
 #include<fstream>
 #include<iostream>
 #include<vector>
-#include<regex>
 
 class Texthandle{
 public:

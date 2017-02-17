@@ -23,8 +23,8 @@ using std::cerr;
         std::string line;
         getline(Texthandle::sourceStream,line);
         if(line.length() > 0){
-            if(line.at(0)=='<'){
-                int pos = line.find_first_of('>');
+            if(line.at(0)=='['){
+                int pos = line.find_first_of(']');
                 std::string tag = line.substr(1,pos-1);
                 getTag(tag,line);
             }
@@ -54,27 +54,27 @@ using std::cerr;
         //cout << "tag: " << tag << std::endl;
         //cout << "Line: " << line << std::endl;
         if(tag.length() > 0){
-            if(tag.compare("Speed") == 0){
-                //cout << "tag: " << tag << " line: " << line << std::endl;
-                //Matches after >, and stops at the next </.
-                std::smatch match;
-                std::regex pattern("(?=\\b)(\\d.*?[^<]*)");
-                std::regex_match(line, match, pattern);
-                if(match.size() > 0){
-                    // cmatch is weird, so to format, I pushed to String Stream. 
-                    cout << match.str() << " <- as Matched... Final: ";
-                    stringstream ss(match[0].str());
-                    ss >> this->speed;
-                    cout << this->speed << std::endl;
-                    line = "";
-                }else{
-                    //cerr << "NO NEW SPEED MATCHED. DEFAULTING." << std::endl;
-                    this->speed = 1;
-                    line = "";
-                } 
-            }
+            for(int c = 0; c < tag.length(); c++){
+				switch (tag[c])
+				case ('b'):
+				
+					break;
+				case ('i'):
+				
+					break;
+				case ('s'):
+					
+					break;
+				case ('p'):
+				
+					break;
+				case default:
+					cout << "Default found." << std::endl;
+					break;
+				
+			}
         }else{
-            cerr << "Negative Tag Length." << std::endl;
+            cerr << "Improper Tag Detected." << std::endl;
         }
 
     }
