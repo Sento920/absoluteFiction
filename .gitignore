@@ -2,3 +2,4 @@
 *.txt
 #ignore obj files
 *.obj
+/obj/
