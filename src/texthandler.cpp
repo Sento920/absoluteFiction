@@ -8,6 +8,9 @@ using std::cerr;
     Texthandle::Texthandle(std::string filepath){
         pastLineLoc = 0;
         speed = 1;
+        bold = false;
+        ital = false;
+
         if(verifyFile(filepath)){
             Texthandle::sourceStream.open(filepath);
             //cout << "Valid." << std::endl;
@@ -28,9 +31,23 @@ using std::cerr;
                 std::string tag = line.substr(1,pos-1);
                 getTag(tag,line);
             }
+            /*while(line.find('[') != npos){
+                int pos = line.find_first_of(']');
+                std::string tag = line.substr
+            
+            }*/
         }
         return line;
     }
+
+    bool Texthandle::isBold(){
+        return bold;
+    }
+
+    bool Texthandle::isItal(){
+        return ital;
+    }
+
     bool Texthandle::verifyFile(std::string filepath){
         std::ifstream f(filepath);
         return f.good();
@@ -53,31 +70,69 @@ using std::cerr;
     void Texthandle::getTag(std::string tag, std::string& line){
         //cout << "tag: " << tag << std::endl;
         //cout << "Line: " << line << std::endl;
+        string temp = "";
         if(tag.length() > 0){
-            for(int c = 0; c < tag.length(); c++){
-				switch (tag[c])
-				case ('b'):
-				
-					break;
-				case ('i'):
-				
-					break;
-				case ('s'):
-					
-					break;
-				case ('p'):
-				
-					break;
-				case default:
-					cout << "Default found." << std::endl;
-					break;
-				
-			}
+            for( unsigned int c = 0; c < tag.length(); c++){
+                if(tag[c] == 's'){
+                    //speed change
+                    int n = c+1;
+                    while((char) tag[n] > 47 && (char) tag[n] <58){
+                        temp += tag[n];
+                        n++; 
+                    }
+                    c = n;
+                    if(temp.length()){
+                        this->speed = std::stoi(temp.c_str());
+                    }
+                }else if(tag[c] == 'b'){
+                    //bolded letter
+                    if(bold){
+                        //cout << "\e1m";
+                        bold = false;
+                    }else{
+                        //cout << "\e0m";
+                        bold = true;
+                    } 
+
+                }else if(tag[c] == 'i'){
+                    //Italics active  
+
+                }else if(tag[c] == 'c'){
+                    //Color change
+
+                }else if(tag[c] == 'p'){
+                    //Player Construct
+                    
+                }
+                int i = line.find(tag);
+                if(i > 0){
+                    line.erase(i-1,tag.length()+2);
+                }          
+	    }
         }else{
             cerr << "Improper Tag Detected." << std::endl;
         }
 
     }
+   
+   void Texthandle::print(string line, int speed){
+    for(unsigned int i = 0; i < line.length(); i++){
+        cout << line[i] << std::flush;
+        std::this_thread::sleep_for (std::chrono::milliseconds(speed * 50));
+    }
+    cout << std::endl;
+    std::this_thread::sleep_for (std::chrono::milliseconds(speed * 50));
+}
+
+void Texthandle::print(string line){
+    for(unsigned int i = 0; i < line.length(); i++){
+        cout << line[i] << std::flush;
+        std::this_thread::sleep_for (std::chrono::milliseconds(50));
+    }
+    cout << std::endl;
+    std::this_thread::sleep_for (std::chrono::milliseconds(50));
+}
+   
    
     int Texthandle::getSpeed(){
         return speed;

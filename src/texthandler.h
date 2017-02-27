@@ -4,6 +4,8 @@
 #include<fstream>
 #include<iostream>
 #include<vector>
+#include<thread>
+#include<chrono>
 
 class Texthandle{
 public:
@@ -18,10 +20,16 @@ public:
     void shutdown();
     void getTag(std::string tag, std::string& line);
     int getSpeed();
+    bool isBold();
+    bool isItal();
     std::vector<std::string> pastLines;
-    int pastLineLoc;
     std::ifstream sourceStream;
+    int pastLineLoc;
+    void print(std::string line, int speed);
+    void print(std::string line);
 private:
+    bool bold;
+    bool ital;
     int speed;
 };
 #endif

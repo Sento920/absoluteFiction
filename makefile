@@ -1,7 +1,7 @@
 
 CPP = g++
 CFLAGS = -Wall -Werror -g -std=c++11 -pedantic
-LIBS = 
+LIBS = -lSDL2 -lSDL2_image 
 TARGET = abfic
 
 #paths for src files and obj files separated

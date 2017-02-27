@@ -1,5 +1,5 @@
 
-<Speed>1</Speed>
+[s1]
 Once upon a time, there lived a Man.
 This man was obsessed with the sexiness of butts.
 
@@ -12,22 +12,21 @@ It was a chilled day, when our hero, Danny Sexbang, woke from his slumber to a r
 The winter frost had touched the window, and the bright sun had graced him with its presence.
 
 He flipped out of bed, ready for his daily practice session of..
-<Speed>3</Speed>
+[s3]
 ATOMIC KARATE
-<Speed>1</Speed>
+[s1]
 Danny was an accomplished Black Belt.
-<Speed>3</Speed>
+[s3]
 I SPLIT THE ATOM WITH A HIGH KICK, BABY.
-<Speed>1</Speed>
+[s1]
 If you are still reading this, kudos.
-<Speed>3</Speed>
+[s3]
 I AM A MASTER CAUSE I PRACTICE DAILY.
-<Speed>1</Speed>
+[s1]
 I don't really wanna continue this story, but Danny is awesome.
-
-If you really are still reading this, Go checkout NSP, and TWRP's LadyWorld.
-
+If you really are still reading this, [s3] Go checkout NSP, and TWRP's LadyWorld. [s1]
+[s4]
 Really. They make good shit.
-
+[s0]
 Also, Atomic Karate is totally a thing.
 
