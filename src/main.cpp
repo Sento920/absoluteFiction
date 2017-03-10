@@ -15,7 +15,8 @@ using std::string;
 using std::vector;
 using std::cout;
 
-
+//#define SCREEN_WIDTH = 640;
+//#define SCREEN_HEIGHT = 480;
 
 int main (int argc, char* argv[]){
     cout << "Starting Up..." << std::endl;
@@ -23,7 +24,7 @@ int main (int argc, char* argv[]){
         string file(argv[1]);
         Texthandle input(file);
         while(input.isGood()){
-            input.print(input.getLine(),input.getSpeed());
+            input.print(input.getLine());
         }
         input.shutdown();
 
@@ -32,7 +33,12 @@ int main (int argc, char* argv[]){
         SDL_Window window = SDL_Window();
         if(window.Initialize()){
             string path = "img/img.jpg";
-            SDL_BlitSurface(window.LoadSurface(path), NULL, window.GetScreenSurface(),NULL);
+            SDL_Rect stretchRect;
+            stretchRect.x = 0;
+            stretchRect.y = 0;
+            stretchRect.w = window.GetScreenWidth();
+            stretchRect.h = window.GetScreenHeight();
+            SDL_BlitScaled(window.LoadSurface(path), NULL, window.GetScreenSurface(),&stretchRect);
             window.UpdateWindow(); 
         }
         SDL_Event e;

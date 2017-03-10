@@ -18,14 +18,14 @@ public:
     bool isGood();
     bool verifyFile(std::string filepath);
     void shutdown();
-    void getTag(std::string tag, std::string& line);
+    //Returns the end of the tag's position to start at.
+    int getTag(std::string tag, std::string& line);
     int getSpeed();
     bool isBold();
     bool isItal();
     std::vector<std::string> pastLines;
     std::ifstream sourceStream;
     int pastLineLoc;
-    void print(std::string line, int speed);
     void print(std::string line);
 private:
     bool bold;

@@ -9,6 +9,7 @@
 class SDL_Window{
     public:
         SDL_Window();
+        SDL_Window(int Swidth, int Sheight);
         bool Initialize();
         SDL_Surface* LoadSurface(std::string path);
         void UpdateWindow();
@@ -23,10 +24,11 @@ class SDL_Window{
             KEY_PRESS_SURFACE_RIGHT,
             KEY_PRESS_SURFACE_TOTAL,
         } KPS;
-
-    private:
-        const int SCREEN_WIDTH = 640;
-        const int SCREEN_HEIGHT =480;
+        int GetScreenWidth();
+        int GetScreenHeight();
+   private:
+        int SCREEN_WIDTH;
+        int SCREEN_HEIGHT;
         SDL_Window* gWindow;
         SDL_Surface* gScreenSurface;
 };
