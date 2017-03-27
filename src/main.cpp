@@ -15,12 +15,12 @@ using std::string;
 using std::vector;
 using std::cout;
 
-//#define SCREEN_WIDTH = 640;
-//#define SCREEN_HEIGHT = 480;
-
 int main (int argc, char* argv[]){
-    cout << "Starting Up..." << std::endl;
-    if(argc == 2){
+   cout << "Starting Up..." << std::endl;
+   //620x480|1280x720|1920x1080
+   const int SCREEN_WIDTH = 1280;
+   const int SCREEN_HEIGHT = 720;
+   if(argc == 2){
         string file(argv[1]);
         Texthandle input(file);
         while(input.isGood()){
@@ -30,8 +30,9 @@ int main (int argc, char* argv[]){
 
     }else if(argc == 1){
         bool quit = false;
-        SDL_Window window = SDL_Window();
-        if(window.Initialize()){
+        //SDL_Window window = SDL_Window();
+        SDL_Window window = SDL_Window(SCREEN_WIDTH,SCREEN_HEIGHT);
+	if(window.Initialize()){
             string path = "img/img.jpg";
             SDL_Rect stretchRect;
             stretchRect.x = 0;
